@@ -1,22 +1,30 @@
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center g-2">
         <div class="col-md-4 rounded shadow p-5 bg-form">
-            <p class="h3 text-center">{{!isRegisterMode?'Login':'Register'}}</p>
-            <form>
+            <p class="h3 text-center">{{isRegisterMode?'Register':'Login'}}</p>
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
                 <div class="mb-3 mt-5">
-                    <label class="form-label">Email Address</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label" >Email Address</label>
+                    <input type="text"
+                     class="form-control" 
+                     ngModel name="email" 
+                     required
+                     email
+                     #emailInput="ngModel">
+                     <span *ngIf="emailInput.invalid && emailInput.touched" class="text-danger">This field is required</span>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" class="form-control">
+                    <label class="form-label" >Password</label>
+                    <input type="password" 
+                    class="form-control" 
+                    ngModel name="pass" 
+                    required>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-primary me-3">Login</button>
-                    <button class="btn btn-success">Login</button>
-
+                    <button class="btn btn-primary me-3" [disabled]="!f.valid" style="width:100%;" >{{isRegisterMode?'Register':'Login'}} </button>
                 </div>
             </form>
+            <button class="btn btn-success" style="width:100%;" (click)="registerToggle()">{{!isRegisterMode?'Register':'Login'}}</button>
         </div>
     </div>
 </div>

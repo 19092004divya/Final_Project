@@ -1,0 +1,31 @@
+<div class="container mt-3 border p-3  bg-dark text-light">
+    <p class="h3" >{{isEditMode?"Edit ":"Create "}}Product</p>
+    <div class="row">
+        <div class="col-md-12"> 
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input class="form-control" [(ngModel)]="product.name" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Brand</label>
+                <input class="form-control" [(ngModel)]="product.brand" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input class="form-control"  [(ngModel)]="product.price" type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">ImageUrl</label>
+                <input class="form-control" [(ngModel)]="product.imageUrl"  type="text">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Manufactured Year</label>
+                <input class="form-control" [(ngModel)]="product.manufacturedYear"  type="text">
+            </div>
+            <button class="btn btn-success me-4" (click)="onSubmit()" *ngIf="!isEditMode">Add</button>
+            <button class="btn btn-warning me-4" (click)="onSubmit()" *ngIf="isEditMode">Update</button>
+            <button class="btn btn-danger" (click)="onBack()" >Back</button>
+
+        </div>
+    </div>
+</div>

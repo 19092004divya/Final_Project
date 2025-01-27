@@ -1,0 +1,8 @@
+<div class="card" appCardStyle>
+    <div class="card-header" style="text-align: center; font-weight: bold;">{{product.name}}</div>
+    <img src="{{product.imageUrl}}" alt="logo" class="img-card-top" style="height:220px;">
+    <div class="card-body">
+        <button class="btn btn-primary" style="width: 100%;" (click)="onDetailsPage()">Details</button>
+    </div>
+    <div class="card-footer text-muted text-center" style="font-weight: bold;">₹{{product.price}}</div>   
+</div>

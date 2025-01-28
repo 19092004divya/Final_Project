@@ -27,8 +27,11 @@ export class ProductComponent {
     });
 
     if(this.id){
-      this.product=this.productService.getProductsById(this.id);
-      this.isEditMode=true;
+      this.productService.getProductsById(this.id)
+      .subscribe((responseData: IProduct)=>{
+        this.product=responseData;
+      });
+     
     }
   }
   onEdit(){

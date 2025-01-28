@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductUpsertComponent } from './products/product-upsert/product-upsert.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './products/product/product.component';
 import { ProductService } from './_services/product.services';
 import { ProductCardComponent } from './products/product-card/product-card.component';
@@ -15,6 +15,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { DdComponent } from './dd/dd.component';
 import { CardStyleDirective } from './_directives/card-style.directives';
 import { UserAuthComponent } from './user-auth/user-auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { UserAuthComponent } from './user-auth/user-auth.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

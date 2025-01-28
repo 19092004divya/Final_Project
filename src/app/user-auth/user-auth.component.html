@@ -18,7 +18,9 @@
                     <input type="password" 
                     class="form-control" 
                     ngModel name="pass" 
-                    required>
+                    required
+                    #pass="ngModel">
+                    <span *ngIf="pass.invalid && pass.touched" class="text-danger">This field is required</span>
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary me-3" [disabled]="!f.valid" style="width:100%;" >{{isRegisterMode?'Register':'Login'}} </button>

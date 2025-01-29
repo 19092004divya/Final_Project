@@ -18,19 +18,34 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  getProducts(): Observable<IProduct[]> {
-    return this.http.get<{ [key: string]: IProduct }>(BASE_URL + '/product.json').pipe(
-      map((responseData) => {
-        const products: IProduct[] = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            const product = { ...responseData[key], id: key };
-            products.push(product);
-          }
+  // getProducts(): Observable<IProduct[]> {
+  //   return this.http.get<{ [key: string]: IProduct }>(BASE_URL + '/product.json').pipe(
+  //     map((responseData) => {
+  //       const products: IProduct[] = [];
+  //       for (const key in responseData) {
+  //         if (responseData.hasOwnProperty(key)) {
+  //           const product = { ...responseData[key], id: key };
+  //           products.push(product);
+  //         }
+  //       }
+  //       return products;
+  //     })
+  //   );
+  // }
+
+  getProducts() {
+    this.loggerService.logInformation("Product Fetched");
+
+    return this.http.get<{ [key: string]: IProduct }>(BASE_URL + '/product.json').pipe(map((responseData) => {
+      const products = [];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          const product = { ...responseData[key], id: key };
+          products.push(product);
         }
-        return products;
-      })
-    );
+      }
+      return products;
+    }));
   }
 
   addProduct(product: IProduct): Observable<any> {
@@ -45,11 +60,11 @@ export class ProductService {
   }
 
   getProductsById(id: string) {
-    return this.http.get(BASE_URL+`/product/${id}.json`).pipe(
-      map((responseData)=>{
-        return {...responseData,id};
+    return this.http.get(BASE_URL + `/product/${id}.json`).pipe(
+      map((responseData) => {
+        return { ...responseData, id };
       }));
-    
+
   }
 
   updateProduct(updateProduct: IProduct): void {

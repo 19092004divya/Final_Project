@@ -27,10 +27,10 @@ export class ProductComponent {
     });
 
     if(this.id){
-      this.productService.getProductsById(this.id)
-      .subscribe((responseData: IProduct)=>{
-        this.product=responseData;
-      });
+      this.productService.getProductsById(this.id);
+      // .subscribe((responseData: IProduct)=>{
+      //   this.product=responseData;
+      // });
      
     }
   }

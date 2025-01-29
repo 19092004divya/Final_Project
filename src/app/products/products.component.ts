@@ -10,13 +10,8 @@ import { ProductService } from '../_services/product.services';
 })
 export class ProductsComponent implements OnInit {
 
-
-
-
   products: IProduct[] = [];
   visibility: boolean = true;
-
-
 
   constructor(private productService: ProductService) { }
 
@@ -24,7 +19,6 @@ export class ProductsComponent implements OnInit {
     this.productService.getProducts().subscribe((responseData)=>{
       this.products=responseData;
     });
-    
   }
 
   

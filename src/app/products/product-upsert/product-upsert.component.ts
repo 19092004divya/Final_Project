@@ -42,7 +42,7 @@ export class ProductUpsertComponent implements OnInit {
     this.initForm();
 
     if (this.id) {
-      this.product = this.productService.getProductsById(this.id);
+      this.productService.getProductsById(this.id);
       this.isEditMode = true;
       this.populateForm();
     }
